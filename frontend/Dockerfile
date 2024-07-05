@@ -1,28 +1,28 @@
 ################################### Stage 1: Build stage named as frontend-builder #######################
+# Using node:21 as base image for the build stage
 FROM node:21 AS frontend-builder
 
 # information about maintainer
 LABEL maintainer="sohailshaikh125@gmail.com"
 
-# Setting up the current working directory as /app
+# creating current working directory 
 WORKDIR /app
 
-# Copy the rest of the application code
+# Copy the application code into the /app directory
 COPY . .
 
-# installing the dependencies
+# install the require dependencies   
 RUN npm install
 
 
-
-
 ######################################### Stage 2 : Final stage ######################################
+#Using node:21-slim as base image for the final stage to make the image a light weight image
 FROM node:21-slim
 
-# Setting up the current working directory as /app
+# creating current working directory as /app
 WORKDIR /app
 
-# copy only the require dependencies from the frontend-builder stage to the Current stage
+# copy only the require files from the frontend-builder stage to the Current stage
 COPY --from=frontend-builder /app .
 
 #Copy the environment varaible file 
