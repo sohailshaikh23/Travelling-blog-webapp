@@ -1,3 +1,4 @@
+################################### Stage 1: Build stage named as frontend-builder #######################
 # Stage 1: build stage as backend-builder
 FROM node:21 AS backend-builder
 
