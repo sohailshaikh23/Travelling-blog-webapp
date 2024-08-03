@@ -22,7 +22,7 @@ FROM node:21-slim
 # creating current working directory as /app
 WORKDIR /app
 
-# copy only the require files from the frontend-builder stage to the Current stage
+# copy only the require files from the frontend-builder stage to the Current stage  MOST IMP STEP
 COPY --from=frontend-builder /app .
 
 #Copy the environment varaible file 
