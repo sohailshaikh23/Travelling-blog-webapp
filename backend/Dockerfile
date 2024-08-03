@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Installing all the dependencies
-RUN npm i
+RUN npm install
 
 
 # Stage 2: Final stage
