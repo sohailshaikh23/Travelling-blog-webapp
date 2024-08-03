@@ -1,4 +1,4 @@
-################################### Stage 1: Build stage named as frontend-builder #######################
+################################### Stage 1: Build stage as frontend-builder #######################
 # Stage 1: build stage as backend-builder
 FROM node:21 AS backend-builder
 
@@ -11,7 +11,7 @@ COPY . .
 # Installing all the dependencies
 RUN npm install
 
-######################################### Stage 2 : Final stage ######################################
+######################################### Stage 2 : Final stage  ######################################
 # Stage 2: Final stage
 FROM node:21-slim
 
