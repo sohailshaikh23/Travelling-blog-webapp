@@ -10,7 +10,7 @@ COPY . .
 # Installing all the dependencies
 RUN npm install
 
-
+######################################### Stage 2 : Final stage ######################################
 # Stage 2: Final stage
 FROM node:21-slim
 
