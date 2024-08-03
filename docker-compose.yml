@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.8"
 service:
   mongodb:
     container_name: mongodb
@@ -11,7 +11,7 @@ service:
     container_name: redis
     restart: unless-stopped
     image: redis:7.0.5-alpine
-    espose:
+    expose:
       - 6379
     depends_on:
       - mongodb
