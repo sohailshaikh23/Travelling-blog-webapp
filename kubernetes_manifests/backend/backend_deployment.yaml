@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: backend
+ namespace: wnaderlust
+ labels: 
+   tier: backend
+   app: api
+spec:
+  replicas: 3
+  selectors:
+    matchLabels:
+      tier: backend
+      app: api
+  template: 
+   metadata:
+    labels: 
+     tier: backend
+     app: api
+   spec: 
+    container: 
+      -name: backend-container
+       image: shaikh23/wanderlust_backend:latest
+       ports:
+         containerPort: 5000
+       env: 
+        - name: MONGO_CONN_STR
+          value: mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/db?replicaSet=rs0
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo_secret
+              key: username
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo_secret
+              key: password
